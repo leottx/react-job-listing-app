@@ -1,4 +1,3 @@
-import 'App.css';
 import data from 'assets/data/jobs-data.json';
 import { useState, useEffect } from 'react';
 import FontFace from 'global/FontFace';
