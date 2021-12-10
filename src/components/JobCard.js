@@ -45,7 +45,7 @@ const JobCard = ({ jobData }) => {
         </p>
       </div>
       <div className='md:ml-auto'>
-        <ul className='flex gap-4'>
+        <ul className='flex gap-4 flex-wrap'>
           {[...languages, ...tools].map((item, index) => {
             return (
               <li

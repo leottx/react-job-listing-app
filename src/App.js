@@ -1,40 +1,49 @@
+// DATA
 import data from 'assets/data/jobs-data.json';
-import { useState, useEffect } from 'react';
+
+// UTILS
+import { useState } from 'react';
+import { buildTagsList } from 'utils/buildTagsList';
+
+// COMPONENTS
+import React from 'react';
 import FontFace from 'global/FontFace';
 import GlobalStyles from 'global/GlobalStyles';
 import JobHeader from 'components/JobHeader';
 import JobBoard from 'components/JobBoard';
 
+export const SearchData = React.createContext();
+
 const App = () => {
-  const [jobData, setJobData] = useState([]);
-
-  useEffect(() => {
-    setJobData(data);
-  }, []);
-
-  console.log(jobData);
+  const [jobsList, setJobList] = useState(data);
+  const [filteredJobs, setFilteredJobs] = useState(jobsList);
+  const [tagsList, setTagsList] = useState(buildTagsList(jobsList));
+  const [inputData, setInputData] = useState('');
 
   return (
     <>
       <GlobalStyles />
       <FontFace />
       <JobHeader />
-      {jobData.length === 0 ? (
+      {jobsList.length === 0 ? (
         <p>Fetching jobs...</p>
       ) : (
-        <JobBoard jobsList={jobData} />
+        <SearchData.Provider
+          value={{
+            inputData,
+            tagsList,
+            filteredJobs,
+            jobsList,
+            setInputData,
+            setTagsList,
+            setFilteredJobs,
+          }}
+        >
+          <JobBoard />
+        </SearchData.Provider>
       )}
     </>
   );
 };
 
 export default App;
-
-// Tarefas
-// 1. Estudar os designs e o json ✅
-// 2. Criar o Job Board Component ✅
-// 3. Obter os dados do json ✅
-// 4. Renderizar os componentes com os dados ✅
-// 5. Estilizar os components ✅
-// 6. Criar o filtro de components
-// 7. Criar filtro de dados
