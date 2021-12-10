@@ -9,6 +9,7 @@ module.exports = {
         primary: '#63A5A4',
         secondary: '#EFF7F6',
         ternary: '#F1FAFB',
+        darkCyan: 'hsl(179, 27%, 45%)',
       },
     },
   },
