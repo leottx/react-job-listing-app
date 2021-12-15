@@ -1,5 +1,7 @@
 # React Job Listing App
 
+![badge done](https://img.shields.io/badge/status-done-success)
+
 Clique no link para ver o projeto: [React Job Listing](https://leottx.github.io/react-job-listing-app/)
 
 ## Overview
